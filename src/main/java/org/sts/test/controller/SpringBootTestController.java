@@ -19,5 +19,15 @@ public class SpringBootTestController {
 
         return "";
     }
+
+    @GetMapping("hello2")
+    public String getHello2(BookVO vo){
+        String result = "";
+
+        System.out.println("title : " + vo.getTitle());
+        System.out.println("author = " + vo.getAuthor());
+
+        return "";
+    }
 }
 
