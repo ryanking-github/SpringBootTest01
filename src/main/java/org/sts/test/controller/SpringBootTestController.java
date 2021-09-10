@@ -1,12 +1,15 @@
 package org.sts.test.controller;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.sts.test.domain.BookVO;
 
 @Controller
+@Slf4j
 public class SpringBootTestController {
 
     @GetMapping("hello")
@@ -21,13 +24,19 @@ public class SpringBootTestController {
     }
 
     @GetMapping("hello2")
-    public String getHello2(BookVO vo){
+    public String getHello2(BookVO vo, Model model){
         String result = "";
 
         System.out.println("title : " + vo.getTitle());
         System.out.println("author = " + vo.getAuthor());
 
-        return "";
+        model.addAttribute("title", vo.getTitle());
+        model.addAttribute("author", vo.getAuthor());
+
+
+        log.info("test");
+
+        return "hello2";
     }
 }
 
